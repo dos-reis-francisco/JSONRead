@@ -1,5 +1,10 @@
-// JSONRead.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
+/**
+* @file JSON_Read.cpp
+* @author Francisco Dos Reis
+* @version 0.0
+* @date 28.11.2021
+* @brief test de la librairie JSONRead
+*/
 
 #include <iostream>
 #include <stdio.h>

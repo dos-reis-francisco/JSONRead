@@ -1,3 +1,11 @@
+/**
+* @file JSON_Read.hpp
+* @author Francisco Dos Reis
+* @version 0.0
+* @date 28.11.2021
+* @brief class JSONRead declaration
+* @brief allow reading datas JSON files into Eigen library matrix
+*/
 #pragma once
 #include <stdio.h>
 
@@ -15,13 +23,18 @@
 
 using namespace Eigen;
 
-#define EIGEN_USE_MKL_ALL
-
+/**
+ * @brief class for reading datas from json to Eigen
+*/
 class JSONRead {
 private:
 	struct json_object* parsed_json;
 	void* Buffer;
 public:
+	/**
+	* @brief Init of the JSON parser and input file
+	* @param name of the JSON file
+	*/
 	JSONRead(const char * file);
 	~JSONRead();
 
@@ -32,6 +45,11 @@ public:
 	*/
 	double ReadDouble(const char* name);
 
+	/**
+	 * @brief read a float value
+	 * @param name name of the value in JSON file
+	 * @return float value returned
+	*/
 	float ReadFloat(const char* name);
 
 	/**
@@ -42,25 +60,39 @@ public:
 	int ReadInt(const char* name);
 
 	/**
-	 * @brief read a array of double into a MFDR matrix length x 1
-	 * @param T void MFDR matrix
+	 * @brief read an EIgen float array 
+	 * @param T Eigen float dynamic array
 	 * @param name name of the array in JSON file
 	*/
 	void ReadFloatArray(ArrayXf& T, const char* name);
 
+	/**
+	 * @brief read an EIgen float array
+	 * @param T Eigen float dynamic Matrix
+	 * @param name name of the array in JSON file
+	*/
 	void ReadFloatMatrix(MatrixXf& T, const char* name);
 
+	/**
+	 * @brief read an EIgen float array
+	 * @param T Eigen float dynamic Vector
+	 * @param name name of the array in JSON file
+	*/
 	void ReadFloatVector(VectorXf& T, const char* name);
 
+	/**
+	 * @brief read an EIgen int array
+	 * @param T Eigen int dynamic array
+	 * @param name name of the array in JSON file
+	*/
 	void ReadIntVector(VectorXi& T, const char* name);
 
 	/**
-	 * @brief read a array of string into a MFDR matrix length x 1
-	 * @param T void MFDR matrix
+	 * @brief read a array of string 
 	 * @param name name of the array in JSON file
+	 * @return array of char **
 	*/
-	
-	char** ReadStringArray(int* Timages, const char* name);
+	char** ReadStringArray(const char* name);
 
 	/**
 	 * @brief read a string value from JSON file

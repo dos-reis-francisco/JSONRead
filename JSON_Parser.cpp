@@ -3,7 +3,8 @@
 * @author Francisco Dos Reis
 * @version 0.0
 * @date 22.04.2021
-* @brief fichier permettant d'entrer les valeurs de calcul à partir d'un fichier JSON
+* @brief fichier permettant d'entrer des matrices de données Eigen 
+* @brief à partir d'un fichier JSON
 * @brief utilise la librairie JSON-C
 */
 
@@ -17,7 +18,6 @@
  * @brief Init of the JSON parser and input file
  * @param name of the JSON file 
 */
-
 JSONRead::JSONRead(const char *name) {
 	FILE* fp;
 	Buffer = _aligned_malloc(10000, 64);
@@ -196,7 +196,7 @@ void JSONRead::ReadIntVector(VectorXi& T, const char* name) {
  * @param T void MFDR matrix
  * @param name name of the array in JSON file
 */
-char ** JSONRead::ReadStringArray(int * Timages, const char* name) {
+char ** JSONRead::ReadStringArray(const char* name) {
 	struct json_object* data;
 	struct json_object* element;
 	size_t i, nindex, lenString;
@@ -208,7 +208,6 @@ char ** JSONRead::ReadStringArray(int * Timages, const char* name) {
 	if (ret == 0) return NULL;
 
 	nindex = json_object_array_length(data);
-	*Timages = (int)nindex;
 	
 	T =(char**) _aligned_malloc(nindex * sizeof(data),64);
 
